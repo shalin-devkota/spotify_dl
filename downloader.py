@@ -1,7 +1,7 @@
 import os
 from pytube import Search, YouTube
 import json
-
+import re
 
 if not os.path.exists("downloads"):
     os.makedirs("downloads")
@@ -17,7 +17,7 @@ def download_handler(songs, play_list_name):
         for result in search_results.results:
             a = result.watch_url
             break
-
+        song_name = song
         song = YouTube(
             a,
         )
@@ -25,11 +25,15 @@ def download_handler(songs, play_list_name):
         try:
             audio_stream = song.streams.filter(only_audio=True).first()
             print("Downloading... ")
-            audio_stream.download(output_path=f"downloads/{play_list_name}")
+            format_song_name = lambda song_name: re.sub(r"[^\w\s-]", "", song_name)
+            song_name = format_song_name(song_name)
+            audio_stream.download(
+                output_path=f"downloads/{play_list_name}", filename=f"{song_name}.mp4"
+            )
             print(f"Downloaded {song.title}")
         except Exception as e:
             print(e)
-            print("Some error occured. Skipping current song")
+            print("Some error occurred. Skipping current song")
             skipped_songs.append(song)
             continue
     print("Downloads finished. Following songs were skipped.")

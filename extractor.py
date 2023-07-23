@@ -4,6 +4,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from downloader import download_handler
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
