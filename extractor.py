@@ -1,11 +1,13 @@
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import json
 from downloader import download_handler
+from dotenv import load_dotenv
 
-os.environ["SPOTIPY_CLIENT_ID"] = "6e4ea7528d414ce398f1b8b66b3d54ff"
-os.environ["SPOTIPY_CLIENT_SECRET"] = "3f753de9e2b742a2b8ee0c2bd300ecde"
+load_dotenv()
+
+SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 songs = []
