@@ -8,7 +8,7 @@
 
 ## Setup Spotipy
 
-To use Spotipy, you need to install it and follow the instructions from the [official documentation](https://spotipy.readthedocs.io/en/2.22.1/) to set it up properly.
+To use Spotipy, you need to install it and follow the instructions from the [official documentation](https://spotipy.readthedocs.io/en/2.22.1/) to set it up properly. You will also need to create an app from the [spotify developer panel](developer.spotify.com/).
 
 ## Installation
 
@@ -17,6 +17,12 @@ To use Spotipy, you need to install it and follow the instructions from the [off
 3. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
+   ```
+4. Create a .env file and put your spotify API Credentials in it.
+
+   ```
+   SPOTIPY_CLIENT_ID = Your spotify client ID
+   SPOTIPY_CLIENT_SECRET =  Your spotify client secret
    ```
 
 ## Patching pytube files
