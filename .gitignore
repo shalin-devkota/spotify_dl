@@ -1,3 +1,5 @@
 .cache
 downloads/
 .env
+playlists.db
+__pycache__/

@@ -14,9 +14,7 @@ def download_handler(songs, play_list_name):
 
     for song in songs:
         search_results = Search(song)
-        for result in search_results.results:
-            a = result.watch_url
-            break
+        a = search_results.results[0].watch_url
         song_name = song
         song = YouTube(
             a,
