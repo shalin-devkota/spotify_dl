@@ -1,11 +1,12 @@
-import os
-from downloader import download_handler
-from client import spotify
+from .downloader import download_handler
+from .client import spotify
 
 songs = []
 
 
-def get_song_list(url):
+def get_song_list(url= None):
+    if url is None :
+        url = input("Enter the playlist url you would like to download: ")
     play_list_name = spotify.playlist(url)["name"]
     result = spotify.playlist_tracks(url)
 
@@ -19,9 +20,6 @@ def get_song_list(url):
 
     download_handler(songs, play_list_name)
 
-
-url = input("Enter the playlist URL: ")
-get_song_list(url)
 
 """
 There is no need to call spotify 2 times as both the tracks and playlist name can be obtained through a  single method.

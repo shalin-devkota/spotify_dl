@@ -26,7 +26,7 @@ def add_to_db(id, name, snapshot):
         )
     except sqlite3.IntegrityError:
         print("The database is already being tracked")
-        return
+
     conn.commit()
     conn.close()
 
@@ -37,7 +37,7 @@ def get_tracked_playlists():
     c.execute("SELECT name FROM playlists ")
     conn.commit()
     rows = c.fetchall()
-
+    conn.close()
     for playlist in rows:
         playlists.append(playlist[0])
     return playlists

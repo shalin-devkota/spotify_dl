@@ -1,8 +1,11 @@
-from client import spotify
-from dbhandler import add_to_db
+from .client import spotify
+from .dbhandler import add_to_db
 
 
-def track(playlist_url):
+def track(playlist_url=None):
+    if playlist_url is None:
+        playlist_url = input("Enter the playlist url you wish to track: ")
+
     playlist = spotify.playlist(playlist_url)
     playlist_id = playlist["id"]
     playlist_name = playlist["name"]
