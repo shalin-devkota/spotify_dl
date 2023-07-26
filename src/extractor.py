@@ -4,8 +4,8 @@ from .client import spotify
 songs = []
 
 
-def get_song_list(url= None):
-    if url is None :
+def get_song_list(url=None):
+    if url is None:
         url = input("Enter the playlist url you would like to download: ")
     play_list_name = spotify.playlist(url)["name"]
     result = spotify.playlist_tracks(url)
@@ -20,11 +20,6 @@ def get_song_list(url= None):
 
     download_handler(songs, play_list_name)
 
-
-"""
-There is no need to call spotify 2 times as both the tracks and playlist name can be obtained through a  single method.
-Only realised it after I wrote code to extract names! Change this in the future! 
-"""
 
 if __name__ == "__main__":
     get_song_list()
