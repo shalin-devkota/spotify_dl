@@ -32,24 +32,15 @@ def add_to_db(id, name, snapshot):
 
 
 def get_tracked_playlists():
-    playlists = {}
+    playlists = []
     conn, c = connect_to_db()
-    c.execute("SELECT id,name FROM playlists ")
+    c.execute("SELECT name FROM playlists ")
     conn.commit()
     rows = c.fetchall()
     conn.close()
-
     for playlist in rows:
-        playlists[playlist[1]] = playlist[0]
+        playlists.append(playlist[0])
     return playlists
 
 
-def get_last_snapshot(id):
-    conn, c = connect_to_db()
-    c.execute("SELECT snapshot FROM playlists WHERE id = id")
-    last_snapshot = c.fetchone()
-    conn.close()
-    return last_snapshot[0]
-
-
-# get_last_snapshot("46jC89e0qdF2FQnTin1VTj")
+create_table()

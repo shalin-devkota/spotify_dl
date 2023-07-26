@@ -1,16 +1,16 @@
-from .client import spotify
-from .dbhandler import get_tracked_playlists, get_last_snapshot
+from client import spotify
+from dbhandler import get_tracked_playlists
 
 
-def sync_playlist():
+def sync_playlist(playlist_id):
     tracked_playlists = get_tracked_playlists()
+    print("Please select a playlist to sync from")
+    playlists = get_tracked_playlists()
     i = 1
-    for key in tracked_playlists.keys():
-        print(f"{i}. key")
+    for playlist in playlists:
+        print(f"{i}. {playlist}")
         i += 1
-    choice = input("Enter the playlist you would like to track: ")
-    # last_snapshot = get_last_snapshot()
-    print(choice)
+    choice = input("Enter your choice: ")
 
 
-sync_playlist()
+sync_playlist(1)

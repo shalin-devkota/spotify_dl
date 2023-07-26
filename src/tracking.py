@@ -13,5 +13,4 @@ def track(playlist_url=None):
     add_to_db(playlist_id, playlist_name, snapshot)
 
 
-if __name__ == "__main__":
-    track()
+track("https://open.spotify.com/playlist/46jC89e0qdF2FQnTin1VTj?si=e3f557a296154af0")
